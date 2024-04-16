@@ -1,0 +1,45 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+
+registries:
+  nuget:
+    type: nuget-feed
+    url: https://api.nuget.org/v3/index.json
+  singular-github:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/SingularSystems/index.json
+    username: singular-github
+    password: ${{ secrets.DEPENDABOT_SINGULAR_GITHUB_PACKAGE_READ }}
+
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/DependabotTest/DependabotTest"
+    registries: "*"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "nuget"
+    directory: "/DependabotTest/DependabotTest.Tests"
+    registries: "*"
+    schedule:
+      interval: "daily"
+    groups:
+      unit-tests:
+        patterns:
+        - "xunit*"
+        - "Microsoft.NET.Test.Sdk"
+
+  - package-ecosystem: "nuget"
+    directory: "/DependabotTest/DependabotTest.Tests2"
+    registries: "*"
+    schedule:
+      interval: "daily"
+    groups:
+      unit-tests:
+        patterns:
+        - "xunit*"
+        - "Microsoft.NET.Test.Sdk"
