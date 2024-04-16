@@ -32,14 +32,3 @@ updates:
         patterns:
         - "xunit*"
         - "Microsoft.NET.Test.Sdk"
-
-  - package-ecosystem: "nuget"
-    directory: "/DependabotTest/DependabotTest.Tests2"
-    registries: "*"
-    schedule:
-      interval: "daily"
-    groups:
-      unit-tests:
-        patterns:
-        - "xunit*"
-        - "Microsoft.NET.Test.Sdk"
